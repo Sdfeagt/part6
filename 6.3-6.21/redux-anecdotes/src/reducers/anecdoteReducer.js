@@ -35,6 +35,8 @@ const reducer = (state = initialState, action) => {
     return state.map(vote =>
       vote.id !== id ? vote : changedVote 
     )
+    case 'Add_New':
+      return [...state, action.data]
 
     default:
       return state
@@ -47,6 +49,17 @@ export const vote = (id) => {
   return{
     type: 'Vote',
     data: {id}
+  }
+}
+
+export const add = (content) =>{
+  return{
+    type: 'Add_New',
+    data:{
+      content,
+      id: getId(),
+      votes: 0
+    }
   }
 }
 

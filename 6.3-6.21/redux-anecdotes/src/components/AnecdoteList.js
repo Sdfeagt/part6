@@ -5,6 +5,7 @@ import {createNotification} from "../reducers/notificationReducer"
 
 const AnecdotesList = () =>{
     const anecdotesUnused = useSelector(state => state)
+    const filter = useSelector((state) => state.filter);
     const compareVotes = (a,b) => {
       return a.votes-b.votes
     }
@@ -22,7 +23,7 @@ const handleVote = (anecdote)=>{
 
     return (
         <div>
-        {anecdotes.map(anecdote =>
+        {anecdotes.filter((anecdote) => anecdote.content.includes(filter)).map(anecdote =>
           <div key={anecdote.id}>
             <div>
               {anecdote.content}

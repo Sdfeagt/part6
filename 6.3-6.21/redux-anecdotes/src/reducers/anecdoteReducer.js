@@ -1,4 +1,4 @@
-
+import { setNotification } from "./notificationReducer"
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -21,7 +21,6 @@ const asObject = (anecdote) => {
 const initialState = anecdotesAtStart.map(asObject)
 
 const reducerAnecdotes = (state = initialState, action) => {
-  console.log('state now: ', state)
   switch(action.type){
   case 'Vote':
     const id = action.data.id
@@ -29,6 +28,7 @@ const reducerAnecdotes = (state = initialState, action) => {
     const changedVote = {
       ...voteToChange, votes: voteToChange.votes + 1
     }
+    setNotification(changedVote.content)
     return state.map(vote =>
       vote.id !== id ? vote : changedVote 
     )
@@ -36,7 +36,6 @@ const reducerAnecdotes = (state = initialState, action) => {
       return [...state, action.data]
 
     default:
-      console.log("Initializing...");
       return state
 
   }

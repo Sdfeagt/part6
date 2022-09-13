@@ -19,7 +19,7 @@ const AnecdotesList = () => {
   }, [dispatch]);
 
 
-const handleVote = (anecdote)=>{
+const handleVote = (anecdote)=>{ 
   console.log("In handlevote, anecdote: ", anecdote);
   dispatch(update(anecdote))
   dispatch(createNotification(`You voted '${anecdote.content}'`, 5))

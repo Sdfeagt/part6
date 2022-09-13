@@ -4,9 +4,9 @@ const Notification = () => {
   const notification = useSelector(state =>state.notification)
   console.log("Notification");
   const style = {
-    border: 'solid',
-    padding: 10,
-    borderWidth: 1
+    border: 'dashed',
+    padding: 20,
+    borderWidth: 2
   }
   if (notification === null){
     return null

@@ -33,6 +33,13 @@ export const initialize = () => {
   };
 };
 
+export const create = (content) => {
+  return async (dispatch) => {
+    const newAnecdote = await anecdoteService.create(content);
+    dispatch(append(newAnecdote));
+  };
+};
+
 export const { vote, append, add } = anecdoteReducer.actions;
 
 export default anecdoteReducer.reducer;
